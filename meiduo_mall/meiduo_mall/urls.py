@@ -14,8 +14,40 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.http import HttpResponse
+from django.urls import path,include
+
+
+def log(request):
+    """
+    1.日志的作用是为了方便我们的项目部署上线之后分析问题
+    2.日志的配置 我们直接复制到setting中就可以了
+    3.日志的级别     DEBUG,info,warning,error,CRITICAL
+    4.使用
+        import logging
+
+        logger = logging.getLogger(setting_name)
+
+        logger.info()
+        logger.warnging()
+        logger.error()
+
+    :param request:
+    :return:
+    """
+    #1.导入
+    import logging
+    #2.创建日志器
+    logger = logging.getLogger('django')
+    #3.记录
+    logger.info('info~~~~')
+    logger.warning('warnging')
+
+    return HttpResponse('log')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path(r'log/', log),
 ]
+
