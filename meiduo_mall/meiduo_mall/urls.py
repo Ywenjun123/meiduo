@@ -18,6 +18,7 @@ from django.http import HttpResponse
 from django.urls import path,include
 
 
+
 def log(request):
     """
     1.日志的作用是为了方便我们的项目部署上线之后分析问题
@@ -49,6 +50,6 @@ def log(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path(r'log/', log),
-    path(r'^',include('apps.users.urls',namespace='users'))
+    path('',include(('apps.users.urls','users'), namespace='users'))
 ]
 
