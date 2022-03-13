@@ -49,5 +49,6 @@ def log(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path(r'log/', log),
+    path(r'^',include('apps.users.urls',namespace='users'))
 ]
 
