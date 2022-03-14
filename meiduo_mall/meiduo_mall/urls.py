@@ -50,6 +50,7 @@ def log(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path(r'log/', log),
-    path('',include(('apps.users.urls','users'), namespace='users'))
+    path('',include(('apps.users.urls','users'), namespace='users')),
+    path('',include(('apps.contents.urls','contents'), namespace='contents'))
 ]
 

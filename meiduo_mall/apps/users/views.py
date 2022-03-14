@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django import http
 from apps.users.models import User
+from django.urls import reverse
 import re
 import logging
 
@@ -71,7 +72,7 @@ class RegisterView(View):
         #     2.5 判断手机号是否符合规则
         if not re.match(r'1[3-9]\d{9}',mobile):
             return http.HttpResponseBadRequest('手机号不符合规则')
-        # 2.6 验证同意协议是否勾选
+        # 2.6 验证同意协议是否勾选(作业)
 
         # 3.验证数据没有问题才入库
         # 当我们在操作外界资源(mysql,redis,file)的时候,我们最好进行 try except的异常处理
@@ -91,8 +92,8 @@ class RegisterView(View):
         # 自己实现request.session
 
         # 系统也能自己去帮助我们实现 登陆状态的保持
-        from django.contrib.auth import login
-        login(request,user)
+        # from django.contrib.auth import login
+        # login(request,user)
 
         return redirect(reverse('contents:index'))
         # return http.HttpResponse('注册成功')
