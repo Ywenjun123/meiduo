@@ -21,9 +21,17 @@ from django.contrib.auth.models import AbstractUser
 """
 当系统的类/方法不能满足我们需求的时候,我们就继承/重写
 # """
-# class User(AbstractUser):
+class User(AbstractUser):
 
-#     mobile=models.CharField(max_length=11,unique=True,verbose_name='手机号')
+    mobile=models.CharField(max_length=11,unique=True,verbose_name='手机号')
+    class Meta:
+        db_table = 'tb_users'
+        verbose_name = '用户'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.username
+
 
 
 
